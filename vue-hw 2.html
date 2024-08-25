@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+      button {
+        margin-right: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Список товаров</h1>
+      <button @click="sortProducts('up')">
+        Сортировка по цене: по возрастанию
+      </button>
+      <button @click="sortProducts('down')">
+        Сортировка по цене: по убыванию
+      </button>
+      <ul>
+        <li v-for="product in sortedProducts" :key="product.name">
+          {{ product.name }} - ₽{{ product.price }}
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          products: [
+            { name: "Хлеб", price: 35 },
+            { name: "Огурцы", price: 70 },
+            { name: "Помидоры", price: 65 },
+            { name: "Чай", price: 55 },
+            { name: "Мраморная говядина", price: 500 },
+            { name: "Гречка", price: 80 },
+          ],
+          sortType: "asc",
+        },
+        computed: {
+          sortedProducts() {
+            return this.products.slice().sort((a, b) => {
+              if (this.sortType === "up") {
+                return a.price - b.price;
+              } else {
+                return b.price - a.price;
+              }
+            });
+          },
+        },
+        methods: {
+          sortProducts(type) {
+            this.sortType = type;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
