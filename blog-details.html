@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="components.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header id="appHeader" class="header center">
+      <div class="head-nav_left">
+        <svg
+          width="33.997559"
+          height="34.000244"
+          viewBox="0 0 33.9976 34.0002"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <defs />
+          <path
+            d="M0 34L13.45 34L13.45 24.49C13.45 22.48 15.08 20.85 17.1 20.85C19.11 20.85 20.74 22.48 20.74 24.49L20.74 34L33.99 34L33.99 0C15.22 0 0 15.22 0 34Z"
+            fill="#CDA274"
+            fill-opacity="1.000000"
+            fill-rule="nonzero"
+          />
+        </svg>
+        <p class="head-nav_left-text">Interno</p>
+      </div>
+      <div class="head-nav_right">
+        <p v-for="item in headerItems" :key="item" class="head-nav_right-text">
+          <a href="#"> {{ item }} </a>
+        </p>
+      </div>
+    </header>
+    <main id="appArticles">
+      <div class="firstPart-details_main-pic"></div>
+      <div class="secondPart-details_box center">
+        <div class="secondPart-details_box_acrticle">
+          <component v-if="currentComponent" :is="currentComponent"></component>
+          <!-- <article class="article-box">
+            <h2 class="article-box_h2">Создадим лучший макет перепланировки</h2>
+            <div class="article-box_img-first"></div>
+            <div class="article-box_p-box">
+              <p class="article-box_p-box_date">26 Декабрь,2022</p>
+              <p class="article-box_p-box_links">Интерьер / Домой / Декор</p>
+            </div>
+            <p class="article-box_p-box_text">
+              В своей статье от 1994-го года журнал «Before & After» отследил
+              фразу «Lorem ipsum ...» до философского трактата Цицерона О
+              пределах добра и зла, написанного в 45 году до нашей эры на
+              латинском языке. В оригинале текст выглядит так «Neque porro
+              quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
+              adipisci velit ...», и переводится как «Нет никого, кто любил бы
+              свою боль, кто искал бы ее и хотел бы чтобы она была у него.
+              Потому что это боль...»
+            </p>
+            <h3 class="article-box_quote">
+              <svg
+                width="72.802734"
+                height="54.589844"
+                viewBox="0 0 72.8027 54.5898"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <defs />
+                <path
+                  d="M65.45 1.81Q62.24 0 58 -7.63e-6Q53.87 -7.63e-6 50.78 1.79Q49.08 2.77 47.7 4.29Q46.46 5.65 45.62 7.23Q43.79 10.62 43.79 14.99Q43.79 18.4 45.99 22.07Q47.7 24.95 50.14 26.91Q50.84 27.48 51.61 27.97L57.22 32.17Q57.05 32.59 56.87 32.99Q54.48 38.34 50.48 42.96Q46.19 47.99 41.21 51.22L43.21 54.58Q54.24 48.98 62.39 40.59Q63.27 39.69 64.11 38.76Q68.37 34.07 70.55 28.54Q72.8 22.82 72.8 16.21Q72.8 9.79 69.73 5.64Q69.25 4.98 68.7 4.39Q67.23 2.82 65.45 1.81ZM24.24 1.81Q21.03 -7.63e-6 16.79 -7.63e-6Q12.66 -7.63e-6 9.57 1.79Q7.87 2.77 6.49 4.29Q5.25 5.65 4.4 7.23Q2.58 10.62 2.58 14.99Q2.58 18.4 4.78 22.07Q6.49 24.95 8.93 26.91Q9.63 27.48 10.4 27.97L16.01 32.17Q15.84 32.59 15.65 32.99Q13.26 38.34 9.27 42.96Q4.98 47.99 -1.53e-5 51.22L2 54.58Q13.02 48.98 21.18 40.59Q22.06 39.69 22.9 38.76Q27.16 34.07 29.34 28.54Q31.59 22.82 31.59 16.21Q31.59 9.79 28.52 5.64Q28.04 4.98 27.49 4.39Q26.02 2.82 24.24 1.81Z"
+                  fill="#CDA274"
+                  fill-opacity="1.000000"
+                  fill-rule="evenodd"
+                />
+              </svg>
+              Какая-то умная и красивая цитата
+            </h3>
+            <h2 class="article-box_h2">Design sprints are great</h2>
+            <p class="article-box_p-box_text">
+              В оригинале текст выглядит так «Neque porro quisquam est qui
+              dolorem ipsum quia dolor sit amet, consectetur, adipisci velit
+              ...», и переводится как «Нет никого, кто любил бы свою боль, кто
+              искал бы ее и хотел бы чтобы она была у него. Потому что это
+              боль...»
+            </p>
+            <ol class="article-box_ol">
+              <li class="article-box_li">
+                С того времени этот, похожий на латинский, текст стал стандартом
+                в печатной промышленности для примеров шрифтов и текстов.
+              </li>
+              <li class="article-box_li">
+                С того времени этот, похожий на латинский, текст стал стандартом
+                в печатной промышленности для примеров шрифтов и текстов.
+              </li>
+              <li class="article-box_li">
+                С того времени этот, похожий на латинский, текст стал стандартом
+                в печатной промышленности для примеров шрифтов и текстов.
+              </li>
+            </ol>
+            <div class="article-box_img-second"></div>
+            <p class="article-box_p-box_text">
+              В своей статье от 1994-го года журнал «Before & After» отследил
+              фразу «Lorem ipsum ...» до философского трактата Цицерона О
+              пределах добра и зла, написанного в 45 году до нашей эры на
+              латинском языке.
+            </p>
+          </article> -->
+        </div>
+        <div class="secondPart-details_box_tags">
+          <h3 class="secondPart-details_box_h">Тэги</h3>
+          <div class="secondPart-details_box_buttons">
+            <button
+              class="secondPart-details_box_button"
+              v-for="button in buttons"
+              :key="button.method"
+              @click="handleButtonClick(button.component)"
+            >
+              {{ button.name }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer-add_main center">
+      <div class="footer_collection">
+        <div class="footer_collection-part">
+          <div class="footer_collection-part_social">
+            <svg
+              width="33.997559"
+              height="34.000336"
+              viewBox="0 0 33.9976 34.0003"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs />
+              <path
+                d="M0 34L13.45 34L13.45 24.49C13.45 22.48 15.08 20.85 17.1 20.85C19.11 20.85 20.74 22.48 20.74 24.49L20.74 34L33.99 34L33.99 0C15.22 0 0 15.22 0 34Z"
+                fill="#CDA274"
+                fill-opacity="1.000000"
+                fill-rule="nonzero"
+              />
+            </svg>
+            Interno
+          </div>
+          <div class="footer_collection-part_social_icons">
+            <svg
+              width="17.964844"
+              height="14.589844"
+              viewBox="0 0 17.9648 14.5898"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs />
+              <path
+                d="M17.96 1.72C17.47 2.46 16.83 3.09 16.13 3.62L16.13 4.11C16.13 9 12.44 14.58 5.66 14.58C3.55 14.58 1.61 13.99 0 12.93C0.28 12.97 0.56 13 0.87 13C2.6 13 4.18 12.41 5.44 11.42C3.83 11.39 2.46 10.33 2 8.85C2.25 8.89 2.46 8.92 2.7 8.92C3.02 8.92 3.37 8.85 3.65 8.78C1.96 8.43 0.7 6.96 0.7 5.16L0.7 5.13C1.19 5.41 1.79 5.55 2.39 5.58C1.37 4.92 0.73 3.79 0.73 2.53C0.73 1.82 0.91 1.19 1.23 0.66C3.05 2.88 5.8 4.35 8.85 4.53Q8.75 4.11 8.75 3.69C8.75 1.65 10.4 0 12.44 0C13.5 0 14.44 0.42 15.15 1.16C15.96 0.98 16.76 0.66 17.47 0.24C17.19 1.12 16.62 1.82 15.85 2.28C16.59 2.21 17.33 2 17.96 1.72Z"
+                fill="#292F36"
+                fill-opacity="1.000000"
+                fill-rule="evenodd"
+              />
+            </svg>
+            <svg
+              width="15.750000"
+              height="15.714844"
+              viewBox="0 0 15.75 15.7148"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs />
+              <path
+                d="M3.76 1.86C3.76 2.91 2.91 3.79 1.86 3.79C0.84 3.79 0 2.91 0 1.86C0 0.84 0.84 0 1.86 0C2.91 0 3.76 0.84 3.76 1.86ZM15.75 15.71L12.48 15.71L12.48 10.61C12.48 9.38 12.44 7.83 10.75 7.83C9.07 7.83 8.82 9.14 8.82 10.51L8.82 15.71L5.55 15.71L5.55 5.2L8.68 5.2L8.68 6.64L8.71 6.64C9.17 5.83 10.23 4.95 11.81 4.95C15.11 4.95 15.75 7.13 15.75 9.94L15.75 15.71ZM3.51 5.2L3.51 15.71L0.24 15.71L0.24 5.2L3.51 5.2Z"
+                fill="#292F36"
+                fill-opacity="1.000000"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="footer_collection-part">
+          <nav class="footer_collection-part_nav">
+            Страницы
+            <ol>
+              <a class="footer_collection-part_nav_part" href="#">Домой </a>
+            </ol>
+            <ol>
+              <a class="footer_collection-part_nav_part" href="#">Проект </a>
+            </ol>
+            <ol>
+              <a class="footer_collection-part_nav_part" href="#">Блог</a>
+            </ol>
+          </nav>
+        </div>
+        <div class="footer_collection-part">
+          <ol class="footer_collection-part_contacts">
+            Контакты
+            <li class="footer_collection-part_contacts-part">
+              55 East Birchwood Ave. Brooklyn, New York 11201
+            </li>
+            <li class="footer_collection-part_contacts-part">
+              contact@interno.com
+            </li>
+            <li class="footer_collection-part_contacts-part">
+              (123) 456 - 7890
+            </li>
+          </ol>
+        </div>
+      </div>
+    </footer>
+    <script>
+      new Vue({
+        el: "#appHeader",
+        data: {
+          headerItems: ["Домой", "Проект", "Блог"],
+        },
+        computed: {
+          indexNav() {
+            return this.newsPlates.slice(0, 2);
+          },
+        },
+      });
+      new Vue({
+        el: "#appArticles",
+        data: {
+          buttons: [
+            { name: "Кухня", component: "kitchen-аrticle" },
+            { name: "Спальня", component: "bedroom-аrticle" },
+            { name: "Здание", component: "building-аrticle" },
+            { name: "Архитектура", component: "architecture-аrticle" },
+            { name: "Планировка", component: "layout-аrticle" },
+            { name: "Столовая", component: "diningRoom-аrticle" },
+          ],
+          currentComponent: "kitchen-аrticle",
+        },
+        methods: {
+          handleButtonClick(componentName) {
+            this.currentComponent = componentName;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
